@@ -1,4 +1,4 @@
-import reactDom from "react-dom";
+import ReactDOM from "react-dom";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import './styles/reset.css'
 import styled from "styled-components";
@@ -15,4 +15,4 @@ function App(){
 }
 
 
-reactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.render(<App />, document.getElementById("root"));
