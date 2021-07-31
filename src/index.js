@@ -1,15 +1,22 @@
 import ReactDOM from "react-dom";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import './styles/reset.css'
-import styled from "styled-components";
+import Topbar from "./TopBar";
+import Home from "./Home";
 
-function App(){
-    return(
+function App() {
+    return (
         <BrowserRouter>
-        <Switch>
-            <Route path="/" exact>
-            </Route>
-        </Switch>
+            <Topbar />
+            <Switch>
+
+                <Route path="/" exact>
+                    <Home />
+                </Route>
+                
+
+
+            </Switch>
         </BrowserRouter>
     )
 }
