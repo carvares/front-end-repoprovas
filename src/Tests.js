@@ -4,7 +4,7 @@ import { useEffect, useState } from "react"
 export default function Tests({ id, modal }) {
     const [testsList, setTestsList] = useState([])
     useEffect(() => {
-        const promisse = axios.get(`http://localhost:4000/tests/${id}`)
+        const promisse = axios.get(`${process.env.REACT_APP_HOST}/tests/${id}`)
         promisse.then(response => setTestsList(response.data))
     }, [])
 

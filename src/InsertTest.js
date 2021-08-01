@@ -14,15 +14,15 @@ export default function InsertTest() {
     let [professor, setProfessor] =  useState("")
     
     useEffect(() => {
-        const promisseRel = axios.get('http://localhost:4000/relations')
+        const promisseRel = axios.get(`${process.env.REACT_APP_HOST}/relations`)
         promisseRel.then(response => setRelations(response.data))
-        const promisseSub = axios.get('http://localhost:4000/subjects')
+        const promisseSub = axios.get(`${process.env.REACT_APP_HOST}/subjects`)
         promisseSub.then(response => setSubjects(response.data))
 
     }, [])
     function sendTest(e){
         e.preventDefault()
-       axios.post('http://localhost:4000/sendtest',{name, link, subject, semester, category, professor})
+       axios.post(`${process.env.REACT_APP_HOST}/sendtest`,{name, link, subject, semester, category, professor})
     }
     
     return (

@@ -12,7 +12,7 @@ export default function SubjectsSearch({ period, professor,profModal }) {
     let [modal, setModal] = useState(false)
 
     useEffect(() => {
-        const promisse = axios.get('http://localhost:4000/subjects')
+        const promisse = axios.get(`${process.env.REACT_APP_HOST}/subjects`)
         promisse.then(response => setSubjects(response.data))
 
     }, [])
@@ -22,7 +22,7 @@ export default function SubjectsSearch({ period, professor,profModal }) {
 
     useEffect(() => {
         if (professor) {
-            const promisse = axios.get('http://localhost:4000/relations')
+            const promisse = axios.get(`${process.env.REACT_APP_HOST}/relations`)
             promisse.then(response => setRelations(response.data.filter(i=>{return i.professor.id === professor.id})) )
         }
     

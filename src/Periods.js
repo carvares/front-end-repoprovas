@@ -6,7 +6,7 @@ import SubjectsSearch from "./Subjects"
 export default function Periods() {
     const [semesters, setSemesters] = useState([])
     useEffect(() => {
-        const promisse = axios.get('http://localhost:4000/semesters');
+        const promisse = axios.get(`${process.env.REACT_APP_HOST}/semesters`);
             promisse.then(response => setSemesters(response.data))
     }, [])
     return (

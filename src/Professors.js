@@ -8,7 +8,7 @@ import SubjectsSearch from "./Subjects"
 export default function ProfessorSearch() {
     let [professors, setProfessors] = useState([])
     useEffect(() => {
-        const promisse = axios.get('http://localhost:4000/professors')
+        const promisse = axios.get(`${process.env.REACT_APP_HOST}/professors`)
         promisse.then(response => setProfessors(response.data))
     }, [])
 
