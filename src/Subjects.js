@@ -23,8 +23,7 @@ export default function SubjectsSearch({ period, professor,profModal }) {
     useEffect(() => {
         if (professor) {
             const promisse = axios.get('http://localhost:4000/relations')
-            promisse.then(response => setRelations(response.data.filter(i=>{if(i.professor.id === professor.id){return i}})) )
-            console.log(relations)
+            promisse.then(response => setRelations(response.data.filter(i=>{return i.professor.id === professor.id})) )
         }
     
     }, [])

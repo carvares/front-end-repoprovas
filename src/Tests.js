@@ -8,12 +8,11 @@ export default function Tests({ id, modal }) {
         promisse.then(response => setTestsList(response.data))
     }, [])
 
-
     return (
         <>
             {testsList.map((test) => {
                 return (
-                    modal?<li key={test.id}>{test.name}</li>:null
+                    <a href = {test.link} target = "_blank" rel="noreferrer"> { modal?<li  key={test.id}>{test.name}</li>:null} </a>
                 )
             })}
         </>

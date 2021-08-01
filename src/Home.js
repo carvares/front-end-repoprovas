@@ -1,5 +1,7 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import styled from "styled-components";
+import UserContext from "./contexts/UserContext";
+import InsertTest from "./InsertTest";
 import Periods from "./Periods";
 import ProfessorSearch from "./Professors";
 
@@ -7,15 +9,19 @@ import ProfessorSearch from "./Professors";
 export default function Home(){
     let [profList, setProfList] = useState(false)
     let [subjList, setSubjList] = useState(false)
+    const {insert} = useContext(UserContext);
+
     return(
         <FrontMenu>
             <h1>RepoProvas</h1>
             <div>
-            <button onClick={()=>{setSubjList(!subjList); setProfList(false)}}>Por disciplina</button>
-            <button onClick={()=>{setProfList(!profList); setSubjList(false)}}>Por professor</button>
+            {!insert?<button onClick={()=>{setSubjList(!subjList); setProfList(false)}}>Por disciplina</button>:null}
+            {!insert?<button onClick={()=>{setProfList(!profList); setSubjList(false)}}>Por professor</button>:null}
             </div>
-           {profList? <ProfessorSearch/>: null} 
-           {subjList? <Periods/>: null} 
+           {profList && !insert? <ProfessorSearch/>: null} 
+           {subjList && !insert? <Periods/>: null} 
+           {insert?<InsertTest/>:null}
+
         </FrontMenu>
     )
 }

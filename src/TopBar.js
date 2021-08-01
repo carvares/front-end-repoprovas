@@ -1,10 +1,13 @@
+import { useContext } from "react";
 import styled from "styled-components";
+import UserContext from "./contexts/UserContext";
+
 
 export default function Topbar() {
+    const {insert, setInsert} = useContext(UserContext);
     return (
         <Bar>
-            <p>Início</p>
-            <p>Enviar prova</p>
+            <p onClick={()=>setInsert(!insert)}>Enviar prova</p>
         </Bar>
     )
 }
@@ -23,6 +26,7 @@ const Bar = styled.div`
     p{
       color: white;
         font-family:"Prompt";
+        cursor: pointer;
     }
 `
 

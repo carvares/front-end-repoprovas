@@ -5,26 +5,28 @@ import SubjectsSearch from "./Subjects"
 
 
 
-export default  function ProfessorSearch(){
-   let [professors, setProfessors] = useState([])
-   useEffect(()=>{
-       const promisse =  axios.get('http://localhost:4000/professors')
-       promisse.then(response => setProfessors(response.data))
-},[])
-    
+export default function ProfessorSearch() {
+    let [professors, setProfessors] = useState([])
+    useEffect(() => {
+        const promisse = axios.get('http://localhost:4000/professors')
+        promisse.then(response => setProfessors(response.data))
+    }, [])
 
-    return(
+
+    return (
         <ProfessorsList>
-        {professors.map(each => {return(
-            <>
-            <p  key={each.id}>{each.name}</p>
-            <SubjectsSearch periods={false} professor={each}/>
-            </>
-        )})}
+            {professors.map(each => {
+                return (
+                    <>
+                        <p key={each.id}>{each.name}</p>
+                        <SubjectsSearch periods={false} professor={each} />
+                    </>
+                )
+            })}
         </ProfessorsList>
     )
 }
-const ProfessorsList =  styled.ul`
+const ProfessorsList = styled.ul`
     margin: 10px auto;
     display: flex;
     flex-direction: column;
